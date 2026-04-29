@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro Vehículos - Premium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="registrovehiculo.css">
+  <script src="registrovehiculo.js" defer></script>
+</head>
+
+<body>
+
+<section class="hero-login">
+  <div class="overlay"></div>
+
+  <h1 class="titulo-header">REGISTRO DE VEHICULOS</h1>
+
+  <div class="menu-botones">
+    <button onclick="mostrar('login')">Login</button>
+    <button onclick="mostrar('registro')">Nuevo Usuario</button>
+  </div>
+
+  <div id="login" class="seccion activa">
+    <div class="card-vehiculo" style="width: 400px;">
+      <div class="form-header"><h3>ACCESO</h3></div>
+      <div class="form-body">
+        <form id="formLogin">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" required placeholder="correo@ejemplo.com">
+          </div>
+          <div class="form-group" style="margin-top: 15px;">
+            <label>Contraseña</label>
+            <input type="password" required placeholder="********">
+          </div>
+          <button type="submit" class="btn-guardar">ENTRAR</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="registro" class="seccion">
+    <div class="card-vehiculo" style="width: 450px;">
+      <div class="form-header"><h3>NUEVO USUARIO</h3></div>
+      <div class="form-body">
+        <form id="formRegistroUsuario">
+          <div class="form-grid">
+            <div class="form-group"><label>Nombre</label><input type="text" placeholder="Nombre"></div>
+            <div class="form-group"><label>Usuario</label><input type="text" placeholder="User123"></div>
+            <div class="form-group full-width"><label>Email</label><input type="email" placeholder="email@correo.com"></div>
+            <div class="form-group full-width"><label>Contraseña</label><input type="password" placeholder="********"></div>
+          </div>
+          <button type="submit" class="btn-guardar">REGISTRARSE</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="vehiculo" class="seccion">
+    <div class="card-vehiculo">
+      <div class="form-header"><h3>REGISTRO DE VEHÍCULO</h3></div>
+      <div class="form-body">
+        <form id="formVehiculo">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="codigo">Código</label>
+              <input type="text" id="codigo" name="codigo" required placeholder="Ej: VHC-001">
+            </div>
+            <div class="form-group">
+              <label for="placa">Placa</label>
+              <input type="text" id="placa" name="placa" required placeholder="ABC-123" style="text-transform: uppercase;">
+            </div>
+            <div class="form-group">
+              <label for="marca">Marca</label>
+              <input type="text" id="marca" name="marca" required placeholder="Ej: Toyota">
+            </div>
+            <div class="form-group">
+              <label for="modelo">Modelo</label>
+              <input type="text" id="modelo" name="modelo" placeholder="Ej: Corolla 2024">
+            </div>
+            <div class="form-group full-width">
+              <label for="motor">Motor</label>
+              <input type="text" id="motor" name="motor" placeholder="Ej: 2.0L Turbo - 200HP">
+            </div>
+          </div>
+
+          <button type="submit" class="btn-guardar">
+            GUARDAR VEHÍCULO
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="listado" class="seccion">
+    <div class="card-vehiculo" style="width: 900px; max-width: 95vw;">
+      <div class="form-header"><h3>LISTADO DE VEHÍCULOS</h3></div>
+      
+      <div class="form-body">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px; gap: 10px;">
+          <input type="text" id="buscador" placeholder="Buscar vehículo..." onkeyup="buscarVehiculo()" 
+                 style="background: transparent; border: 1px solid #444; border-radius: 8px; color: white; padding: 10px; width: 60%;">
+          
+          <div style="display: flex; gap: 10px;">
+            <button class="nav-btn-small" onclick="verTodos()" style="padding: 8px 16px;">Ver todos</button>
+            <button class="nav-btn-small" onclick="mostrar('vehiculo')" style="padding: 8px 16px;">+ Nuevo</button>
+          </div>
+        </div>
+
+        <table class="tabla-pro">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Placa</th>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Motor</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaVehiculos"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>
